@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools", "wheel", "torch"]
+
+[tool.usort]
+first_party_detection = false
+target-version = ["py38"]
+excludes = [
+    "gallery",
+    "tutorials",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
