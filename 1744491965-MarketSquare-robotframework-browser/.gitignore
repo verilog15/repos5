@@ -1,0 +1,57 @@
+Browser/wrapper/*.js
+Browser/wrapper
+Browser/generated
+Browser/__init__.pyi
+Browser/browser.pyi
+Browser/**/*.pyc
+Browser/rfbrowser.log
+node/playwright-wrapper/generated
+
+docs/Browser.html
+docs/index.html
+
+node/dynamic-test-app/dist/*.js
+node/dynamic-test-app/src/*.js
+*.js.map
+
+.idea
+.pabotsuitenames
+.mypy_cache
+__pycache__
+robotframework_browser.egg-info/
+.venv
+zip_results
+
+# utest
+utest/output
+.pytest_cache
+flip_rate
+
+node/.linted
+node/.built
+node/dynamic-test-app/.built
+Browser/.linted
+Browser/.installed
+
+# Robot Framework outputs
+log.html
+output.xml
+report.html
+atest/output
+playwright-log.txt
+lsp
+
+node_modules/
+dist
+build
+pip-wheel-metadata
+tmp
+.vscode
+
+# coverage
+.coverage
+htmlcov
+results
+
+# linting
+.ruff_cache

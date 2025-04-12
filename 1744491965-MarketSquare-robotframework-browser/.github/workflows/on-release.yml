@@ -1,0 +1,38 @@
+name: Release tasks
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Dependencies for building docs
+        run: |
+          npm ci
+          python -m pip install --upgrade pip
+          pip install uv
+          uv pip install -r Browser/dev-requirements.txt  --python 3.12 --system
+          inv build
+      - name: Build docs
+        run: |
+          inv docs
+          inv gh-pages-index
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: docs # The folder the action should deploy.
