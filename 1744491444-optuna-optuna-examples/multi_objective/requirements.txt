@@ -1,0 +1,5 @@
+botorch>=0.8.0
+fvcore
+torch
+torchaudio
+torchvision

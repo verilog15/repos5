@@ -1,0 +1,10 @@
+mpi4py
+pandas
+plotly
+pytorch-ignite
+lightning
+skorch
+torch
+torchvision
+torchaudio
+optuna

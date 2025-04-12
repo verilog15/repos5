@@ -1,0 +1,8 @@
+dm-haiku
+jax
+jaxlib
+numpy
+optax
+optuna
+tensorflow-cpu
+tensorflow-datasets

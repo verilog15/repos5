@@ -1,0 +1,4 @@
+catboost>=0.26
+# TODO(nzw0301): Remove this numpy version constraint when catboost support numpy 2.0, which is tracked by https://github.com/catboost/catboost/issues/2671.
+numpy<2.0.0
+scikit-learn
