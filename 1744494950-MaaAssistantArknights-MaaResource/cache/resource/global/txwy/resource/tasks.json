@@ -1,0 +1,26 @@
+{
+    "BattleStartPre": {
+        "text": ["開始行動", "開始突襲", "開始試煉", "開始試束", "開始測試"]
+    },
+    "StartButton1": {
+        "text": ["開始行動"]
+    },
+    "StageResource": {
+        "roi": [600, 600, 250, 110]
+    },
+    "Roguelike@IntegratedStrategies": {
+        "roi": [0, 600, 1280, 110]
+    },
+    "StageTheme": {
+        "roi": [200, 640, 300, 60]
+    },
+    "BP-Open": {
+        "text": ["生路", "防線鞏固", "防線", "線鞏", "鞏固"]
+    },
+    "BP-OpenOcr": {
+        "text": ["生路", "防線鞏固", "防線", "線鞏", "鞏固"]
+    },
+    "BPChapterToBP": {
+        "text": ["信標投放", "信標", "標投", "投放"]
+    }
+}
