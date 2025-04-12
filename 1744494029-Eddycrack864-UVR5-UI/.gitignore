@@ -1,0 +1,30 @@
+# Eddycrack864 functional adds
+*.onnx
+*.pth
+*.th
+*.ckpt
+*.chpt
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+/.gradio
+
+#Audio files
+*.wav
+*.flac
+*.mp3
+*.ogg
+*.opus
+*.m4a
+*.aiff
+*.ac3
+
+# Specific files
+models/*.json
+models/*.yaml
+
+# Environments
+.env
+.venv
+env/
+venv/
