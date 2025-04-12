@@ -1,0 +1,158 @@
+# IMPORTANT NOTE: Volume paths mounted on containers are relative to the
+# directory that this file is in (`docker/`) and so probably need to start with
+# `../` to refer to a directory in the main code checkout
+
+volumes:
+  redis:
+  timescaledb:
+  rabbitmq:
+  # The contents of /root, so that bash and ipython can store history
+  web_home:
+  couchdb:
+
+services:
+
+  redis:
+    image: redis:6.2.2
+    volumes:
+      - redis:/data:z
+
+  lb_db:
+    image: timescale/timescaledb:2.6.0-pg12
+    volumes:
+      - timescaledb:/var/lib/postgresql/data:z
+    ports:
+      - "127.0.0.1:7432:5432"
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+
+  couchdb:
+    image: couchdb:3.2.2
+    environment:
+      COUCHDB_USER: listenbrainz
+      COUCHDB_PASSWORD: listenbrainz
+    volumes:
+      - ./couchdb_test.ini:/opt/couchdb/etc/local.ini
+      - couchdb:/var/lib/couchdb
+    ports:
+      - "127.0.0.1:5984:5984"
+
+  rabbitmq:
+    image: rabbitmq:3.8.16-management
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq:z
+    ports:
+      - "127.0.0.1:25672:15672"
+
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: listenbrainz-dev
+      args:
+        GIT_COMMIT_SHA: HEAD
+    environment:
+      FLASK_APP: listenbrainz.webserver:create_web_app()
+    command: flask run -h 0.0.0.0 -p 80 --debug
+    image: web
+    volumes:
+      - web_home:/root
+      - ..:/code/listenbrainz:z
+      - ../frontend:/static
+    ports:
+      - "8100:80"
+    user: "${LB_DOCKER_USER:-root}:${LB_DOCKER_GROUP:-root}"
+    depends_on:
+      - redis
+      - lb_db
+      - rabbitmq
+      - couchdb
+
+  api_compat:
+    image: web
+    environment:
+      FLASK_APP: listenbrainz.webserver:create_api_compat_app()
+    command: flask run -h 0.0.0.0 -p 8101 --debug
+    ports:
+      - "8101:8101"
+    volumes:
+      - ..:/code/listenbrainz:z
+    user: "${LB_DOCKER_USER:-root}:${LB_DOCKER_GROUP:-root}"
+    depends_on:
+      - redis
+      - lb_db
+      - rabbitmq
+
+  timescale_writer:
+    image: web
+    command: python3 -m "listenbrainz.timescale_writer.timescale_writer"
+    volumes:
+      - ..:/code/listenbrainz:z
+    user: "${LB_DOCKER_USER:-root}:${LB_DOCKER_GROUP:-root}"
+    depends_on:
+      - redis
+      - lb_db
+      - rabbitmq
+
+  background_tasks:
+    image: web
+    command: python3 -m "listenbrainz.background.background_tasks"
+    volumes:
+      - ..:/code/listenbrainz:z
+    user: "${LB_DOCKER_USER:-root}:${LB_DOCKER_GROUP:-root}"
+    depends_on:
+      - redis
+      - lb_db
+      - rabbitmq
+
+  spotify_reader:
+    image: web
+    volumes:
+      - ..:/code/listenbrainz:z
+    command: python3 -m "listenbrainz.listens_importer.spotify"
+    user: "${LB_DOCKER_USER:-root}:${LB_DOCKER_GROUP:-root}"
+    depends_on:
+      - redis
+      - lb_db
+      - rabbitmq
+
+  lastfm_importer:
+    image: web
+    volumes:
+      - ..:/code/listenbrainz:z
+    command: python3 -m "listenbrainz.listens_importer.lastfm"
+    user: "${LB_DOCKER_USER:-root}:${LB_DOCKER_GROUP:-root}"
+    depends_on:
+      - redis
+      - rabbitmq
+      - lb_db
+
+  websockets:
+    image: web
+    volumes:
+      - ..:/code/listenbrainz:z
+    command: python manage.py run_websockets -h 0.0.0.0 -p 8102
+    ports:
+      - "8102:8102"
+    user: "${LB_DOCKER_USER:-root}:${LB_DOCKER_GROUP:-root}"
+    depends_on:
+      - redis
+      - lb_db
+      - rabbitmq
+
+  static_builder:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: listenbrainz-frontend-dev
+    command: npm run build:dev
+    user: "${LB_DOCKER_USER:-node}:${LB_DOCKER_GROUP:-node}"
+    volumes:
+      - ../frontend:/code/frontend:z
+
+# Uncomment the following lines if you want to connect the LB network to a musicbrainz-docker network to access a MB replica
+# TODO: re-comment these before merging this code
+#networks:
+# default:
+#   name: musicbrainz-docker_default
+#             external: true

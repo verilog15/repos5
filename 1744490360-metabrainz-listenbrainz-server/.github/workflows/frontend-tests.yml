@@ -1,0 +1,56 @@
+name: ListenBrainz Frontend Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ '*' ]
+    types: [ opened, synchronize, reopened, ready_for_review ]
+    paths:
+      - '**.jsx?'
+      - '**.tsx?'
+      - '**.snap'
+      - '**.less'
+      - '**.json'
+      - 'docker/Dockerfile'
+      - 'docker/docker-compose.test.yml'
+      - 'test.sh'
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    if: github.event.pull_request.draft == false
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Login to Docker Hub
+      run: echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+      continue-on-error: true
+
+    # We do not use this to install node but only to register problem matchers
+    # so that eslint annotations work.
+    - name: Setup Node.js environment to enable annotations
+      uses: actions/setup-node@v4
+
+    - name: Build frontend containers
+      run: ./test.sh fe -b
+
+    - name: Run frontend tests
+      run: ./test.sh fe
+
+    - name: Run linter
+      run: |
+        ./test.sh fe -f
+      if: ${{ always() }}
+
+    - name: Run type checker
+      run: ./test.sh fe -t
+      if: ${{ always() }}

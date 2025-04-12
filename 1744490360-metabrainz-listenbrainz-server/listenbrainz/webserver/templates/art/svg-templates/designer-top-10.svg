@@ -1,0 +1,77 @@
+{%- from 'art/svg-templates/macros.j2' import render_entity_link -%}
+
+<svg id="svg2"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns="http://www.w3.org/2000/svg"
+     version="1.1"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     role="img"
+     viewBox="0 0 924 924"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     height="{{ height }}"
+     width="{{ width }}">
+  <title>Top 10 releases {{ metadata["time_range"] }} for {{ metadata["user_name"] }}&#xA;</title>
+  <desc>
+      {%- for release in releases[:10] -%}
+        {%- if loop.index == 10 -%}X{%- else -%}{{- loop.index -}}{%- endif -%}. {{ release.release_name }} - {{ release.artist_name }}&#xA;
+      {%- endfor -%}
+  </desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;900');
+    .artist-name *, .artist-name {
+      font-weight: 500;
+    }
+  </style>
+ <defs id="defs42">
+  <linearGradient id="purple-gradient" y2="2000" gradientUnits="userSpaceOnUse" x2="442" y1="38" x1="13">
+   <stop id="stop4176" stop-color="#00A2CC" offset="0"/>
+   <stop id="stop4178" stop-color="#FF29A5" offset="1"/>
+  </linearGradient>
+  <clipPath id="clip">
+      <use xlink:href="#background"/>
+  </clipPath>
+ </defs>
+ <rect id="background" height="924" fill="url(#purple-gradient)" rx="4" ry="4" width="924" y="0" x="0"/>
+ <g clip-path="url(#clip)" letter-spacing="0em" font-weight="900" font-family="Inter, sans-serif" fill="#FAFF5B">
+  <g font-size="20px">
+   <text id="user_name"><tspan id="tspan6" y="36" x="22">{{ metadata["user_name"]|upper|e }}</tspan></text>
+   <text id="text8"><tspan id="tspan10" y="894" x="22">TOP TEN RELEASES {{ metadata["time_range"]|upper|e }}</tspan></text>
+   <text id="number_of_releases"><tspan id="tspan14" y="894" x="769">{{ metadata["num_releases"] }} RELEASES</tspan></text>
+   <text id="date"><tspan id="tspan18" y="36" x="773">{{ metadata["date"] }}</tspan></text>
+  </g>
+  {% set y_artists_start = 100 %}
+  {% set y_albums_start = 135 %}
+  {% set y_lines_start = 87 %}
+  {% set gap = 80 %}
+  <g font-size="35px">
+   {% for release in releases[:10] %}
+     <text id="artist-{{ loop.index }}">
+     <tspan x="-7" y="{{ y_artists_start + loop.index0 * gap }}" id="artist-{{ loop.index }}-number">
+       {% if loop.index == 10 %}
+         X
+       {% else %}
+         {{ loop.index }}
+       {% endif %}
+     </tspan>
+     <tspan x="40" y="{{ y_artists_start + loop.index0 * gap }}" id="artist-{{ loop.index }}-album">
+       {{ render_entity_link("release", release.release_mbid, release.release_name) }}
+     </tspan>
+     <tspan x="40" y="{{ y_albums_start + loop.index0 * gap }}" class="artist-name" id="artist-{{ loop.index }}-name">
+       {{ render_entity_link("artist", release.artist_mbids[0], release.artist_name) }}
+     </tspan>
+   </text>
+   {% endfor %}
+  </g>
+  <g id="lines" stroke="#FAFF5B">
+    {% for _ in releases[:10] %}
+      <line
+       x1="0"
+       y1="{{ y_lines_start + loop.index0 * gap }}"
+       x2="925"
+       y2="{{ y_lines_start + loop.index0 * gap }}"
+       id="line-{{ loop.index }}" />
+    {% endfor %}
+  </g>
+ </g>
+</svg>

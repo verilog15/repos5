@@ -1,0 +1,174 @@
+[
+  {
+    "user_id": 1,
+    "count": 6,
+    "data": [
+      {
+        "artist_name": "Lenka",
+        "artist_mbids": [
+          "ba64b195-01dd-4613-9534-bb87dc44cffb"
+        ],
+        "recording_mbid": "af757f8d-fc67-4b3b-98e8-dcc28c2e3bd8",
+        "release_name": "We Belong",
+        "release_mbid": "868e1be0-58db-412d-90b5-939f9a9ef63f",
+        "track_name": "We Belong",
+        "listen_count": 5,
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Lenka",
+            "join_phrase": "",
+            "artist_mbid": "ba64b195-01dd-4613-9534-bb87dc44cffb"
+          }
+        ]
+      },
+      {
+        "artist_name": "Ellie Goulding",
+        "artist_mbids": [
+          "7addbcac-ae39-4b4c-a956-53da336d68e8"
+        ],
+        "recording_mbid": "dba2d0b0-ce5d-4c60-8f57-141584bfb07c",
+        "release_name": "Brightest Blue (explicit)",
+        "release_mbid": "b024416c-a8ef-43cb-bbd5-6e98fe0197bf",
+        "track_name": "Sixteen",
+        "listen_count": 5,
+        "caa_id": 26757092434,
+        "caa_release_mbid": "b024416c-a8ef-43cb-bbd5-6e98fe0197bf",
+        "artists": [
+          {
+            "artist_credit_name": "Ellie Goulding",
+            "join_phrase": "",
+            "artist_mbid": "7addbcac-ae39-4b4c-a956-53da336d68e8"
+          }
+        ]
+      },
+      {
+        "artist_name": "Coldplay",
+        "artist_mbids": [
+          "6599e41e-390c-4855-a2ac-68ee798538b4"
+        ],
+        "recording_mbid": "b335dccb-3084-4bf3-8ca5-892975323c28",
+        "release_name": "Ghost Stories",
+        "release_mbid": "623a3d9d-9d22-418e-9adf-0de145dd871e",
+        "track_name": "Ink",
+        "listen_count": 5,
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Coldplay",
+            "join_phrase": "",
+            "artist_mbid": "6599e41e-390c-4855-a2ac-68ee798538b4"
+          }
+        ]
+      },
+      {
+        "artist_name": "Train",
+        "artist_mbids": [
+          "fbe59c7e-3a75-459b-8fc8-07abaa6d1d2c"
+        ],
+        "recording_mbid": "eb255a08-1486-4ac0-a796-1092421959e8",
+        "release_name": "Save Me, San Francisco (Golden Gate Edition)",
+        "release_mbid": "09b9ed8f-48b7-49c2-8b2f-ad7b72584bbc",
+        "track_name": "Hey, Soul Sister",
+        "listen_count": 5,
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Train",
+            "join_phrase": "",
+            "artist_mbid": "fbe59c7e-3a75-459b-8fc8-07abaa6d1d2c"
+          }
+        ]
+      },
+      {
+        "artist_name": "Maroon 5",
+        "artist_mbids": [
+          "9d5adabb-9775-4535-93eb-12b485aed8bf"
+        ],
+        "recording_mbid": "8daff47f-4732-4946-870a-7c1305f1d652",
+        "release_name": "Girls Like You (feat. Cardi B)",
+        "release_mbid": "5162d1cd-c926-4fa0-a52c-fdb183e039b6",
+        "track_name": "Girls Like You (feat. Cardi B)",
+        "listen_count": 5,
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Maroon 5",
+            "join_phrase": "",
+            "artist_mbid": "9d5adabb-9775-4535-93eb-12b485aed8bf"
+          }
+        ]
+      },
+      {
+        "artist_name": "Within Temptation",
+        "artist_mbids": [
+          "50751cf3-40c6-454e-99d9-3d5777e4ad4f"
+        ],
+        "recording_mbid": "c3922480-7ae2-472b-88c0-0acafb207af2",
+        "release_name": "The Unforgiving",
+        "release_mbid": "907b37ad-71df-4237-a7ed-3ed5fea96179",
+        "track_name": "Faster",
+        "listen_count": 5,
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Within Temptation",
+            "join_phrase": "",
+            "artist_mbid": "50751cf3-40c6-454e-99d9-3d5777e4ad4f"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "user_id": 2,
+    "count": 2,
+    "data": [
+      {
+        "artist_name": "Coldplay",
+        "artist_mbids": [
+          "6599e41e-390c-4855-a2ac-68ee798538b4"
+        ],
+        "recording_mbid": "4691e338-b9dc-4dc8-9538-af7a9e90fd5a",
+        "release_name": "A Head Full Of Dreams",
+        "release_mbid": "452351a2-a730-4df0-88f9-f63f24101562",
+        "track_name": "Everglow",
+        "listen_count": 5,
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Coldplay",
+            "join_phrase": "",
+            "artist_mbid": "6599e41e-390c-4855-a2ac-68ee798538b4"
+          }
+        ]
+      },
+      {
+        "artist_name": "The Weeknd",
+        "artist_mbids": [
+          "2b0646af-f3f0-4a5b-b629-6c31301c1c29"
+        ],
+        "recording_mbid": "c0b51d3f-b0da-4aef-a727-684cc205039b",
+        "release_name": "Blinding Lights",
+        "release_mbid": "51b2ee66-ce30-4c83-8250-1a183f321de6",
+        "track_name": "Blinding Lights",
+        "listen_count": 5,
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "The Weeknd",
+            "join_phrase": "",
+            "artist_mbid": "2b0646af-f3f0-4a5b-b629-6c31301c1c29"
+          }
+        ]
+      }
+    ]
+  }
+]

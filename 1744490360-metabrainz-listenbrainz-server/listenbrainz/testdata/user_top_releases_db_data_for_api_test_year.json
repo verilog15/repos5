@@ -1,0 +1,194 @@
+[
+  {
+    "user_id": 1,
+    "count": 7,
+    "data": [
+      {
+        "artist_mbids": [
+          "d340853d-7408-4a0d-89c2-6ff13e568815"
+        ],
+        "release_mbid": "bbfac9ad-fdd2-4c02-a07d-a994e73323b4",
+        "release_name": "Aalas Ka Pedh",
+        "listen_count": 211,
+        "artist_name": "The Local train",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "The Local train",
+            "join_phrase": "",
+            "artist_mbid": "d340853d-7408-4a0d-89c2-6ff13e568815"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "d340853d-7408-4a0d-89c2-6ff13e568815"
+        ],
+        "release_mbid": "f7bca8ea-e17b-4c93-a9d3-f8c48674f901",
+        "release_name": "Vaaqif",
+        "listen_count": 168,
+        "artist_name": "The Local train",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "The Local train",
+            "join_phrase": "",
+            "artist_mbid": "d340853d-7408-4a0d-89c2-6ff13e568815"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "ba64b195-01dd-4613-9534-bb87dc44cffb"
+        ],
+        "release_mbid": "a9cb9c18-9997-487f-bccf-e3085d957f12",
+        "release_name": "Two (Expanded Edition)",
+        "listen_count": 163,
+        "artist_name": "Lenka",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Lenka",
+            "join_phrase": "",
+            "artist_mbid": "ba64b195-01dd-4613-9534-bb87dc44cffb"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "fecda98e-0533-4b87-a9d1-c89b4521918b"
+        ],
+        "release_mbid": "40ae81e6-80df-47cf-a76d-6879794791e0",
+        "release_name": "Night Visions (Deluxe)",
+        "listen_count": 106,
+        "artist_name": "Imagine Dragons",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Imagine Dragons",
+            "join_phrase": "",
+            "artist_mbid": "fecda98e-0533-4b87-a9d1-c89b4521918b"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "ba64b195-01dd-4613-9534-bb87dc44cffb"
+        ],
+        "release_mbid": "e351ec58-091f-4d56-ada3-3189ff9fc231",
+        "release_name": "Lenka (Expanded Edition)",
+        "listen_count": 76,
+        "artist_name": "Lenka",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Lenka",
+            "join_phrase": "",
+            "artist_mbid": "ba64b195-01dd-4613-9534-bb87dc44cffb"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "6599e41e-390c-4855-a2ac-68ee798538b4"
+        ],
+        "release_mbid": "452351a2-a730-4df0-88f9-f63f24101562",
+        "release_name": "A Head Full Of Dreams",
+        "listen_count": 76,
+        "artist_name": "Coldplay",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Coldplay",
+            "join_phrase": "",
+            "artist_mbid": "6599e41e-390c-4855-a2ac-68ee798538b4"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "6599e41e-390c-4855-a2ac-68ee798538b4"
+        ],
+        "release_mbid": "623a3d9d-9d22-418e-9adf-0de145dd871e",
+        "release_name": "Ghost Stories",
+        "listen_count": 56,
+        "artist_name": "Coldplay",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Coldplay",
+            "join_phrase": "",
+            "artist_mbid": "6599e41e-390c-4855-a2ac-68ee798538b4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "user_id": 2,
+    "count": 3,
+    "data": [
+      {
+        "artist_mbids": [
+          "6599e41e-390c-4855-a2ac-68ee798538b4"
+        ],
+        "release_mbid": "c287322a-0319-447e-abc2-5c33acdf7d1c",
+        "release_name": "Everyday Life",
+        "listen_count": 48,
+        "artist_name": "Coldplay",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Coldplay",
+            "join_phrase": "",
+            "artist_mbid": "6599e41e-390c-4855-a2ac-68ee798538b4"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "7addbcac-ae39-4b4c-a956-53da336d68e8"
+        ],
+        "release_mbid": "de97ca87-36c4-4995-a5c9-540e35944352",
+        "release_name": "Delirium (Deluxe)",
+        "listen_count": 46,
+        "artist_name": "Ellie Goulding",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Ellie Goulding",
+            "join_phrase": "",
+            "artist_mbid": "7addbcac-ae39-4b4c-a956-53da336d68e8"
+          }
+        ]
+      },
+      {
+        "artist_mbids": [
+          "7addbcac-ae39-4b4c-a956-53da336d68e8"
+        ],
+        "release_mbid": "de97ca87-36c4-4995-a5c9-540e35944352",
+        "release_name": "Delirium (Deluxe)",
+        "listen_count": 42,
+        "artist_name": "Ellie Goulding",
+        "caa_id": null,
+        "caa_release_mbid": null,
+        "artists": [
+          {
+            "artist_credit_name": "Ellie Goulding",
+            "join_phrase": "",
+            "artist_mbid": "7addbcac-ae39-4b4c-a956-53da336d68e8"
+          }
+        ]
+      }
+    ]
+  }
+]

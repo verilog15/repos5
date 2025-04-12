@@ -1,0 +1,16 @@
+hdfs==2.7.3
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+itsdangerous==2.2.0
+kombu==5.4.2
+python-dateutil==2.9.0.post0
+numpy==2.2.3
+pydantic==1.10.13
+sentry-sdk==2.22.0
+more-itertools==10.6.0
+pycountry==24.6.1
+pycurl==7.45.6
+requests==2.32.3
+pandas==2.2.3
+zstandard==0.23.0
+pyarrow==19.0.1

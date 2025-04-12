@@ -1,0 +1,99 @@
+import os
+
+{{- define "KEY" -}}
+    {{ key (printf "docker-server-configs/LB/config.%s.json/%s" (env "DEPLOY_ENV") .) }}
+{{- end -}}
+
+{{if service "pgbouncer-aretha"}}
+{{with index (service "pgbouncer-aretha") 0}}
+MBID_MAPPING_DATABASE_URI = "dbname=musicbrainz_json_dump user=musicbrainz host={{.Address}} port={{.Port}} password=musicbrainz"
+{{end}}
+{{end}}
+
+SQLALCHEMY_DATABASE_URI = ""
+MESSYBRAINZ_SQLALCHEMY_DATABASE_URI = ""
+POSTGRES_ADMIN_URI = ""
+MB_DATABASE_MASTER_URI = ""
+
+{{if service "pgbouncer-master"}}
+{{with index (service "pgbouncer-master") 0}}
+SQLALCHEMY_DATABASE_URI = "postgresql://listenbrainz:listenbrainz@{{.Address}}:{{.Port}}/listenbrainz"
+MESSYBRAINZ_SQLALCHEMY_DATABASE_URI = "postgresql://messybrainz:messybrainz@{{.Address}}:{{.Port}}/messybrainz"
+POSTGRES_ADMIN_URI = "postgresql://postgres@{{.Address}}:{{.Port}}/postgres"
+MB_DATABASE_MASTER_URI = "postgresql://mbid_mapper@{{.Address}}:{{.Port}}/musicbrainz_db"
+{{end}}
+{{else}}
+SQLALCHEMY_DATABASE_URI = "SERVICEDOESNOTEXIST_pgbouncer-master"
+MESSYBRAINZ_SQLALCHEMY_DATABASE_URI = "SERVICEDOESNOTEXIST_pgbouncer-master"
+POSTGRES_ADMIN_URI = "SERVICEDOESNOTEXIST_pgbouncer-master"
+MB_DATABASE_MASTER_URI = "SERVICEDOESNOTEXIST_pgbouncer-master"
+{{end}}
+
+MB_DATABASE_STANDBY_URI = ""
+
+{{if service "pgbouncer-slave"}}
+{{with index (service "pgbouncer-slave") 0}}
+MB_DATABASE_STANDBY_URI = "postgresql://mbid_mapper@{{.Address}}:{{.Port}}/musicbrainz_db"
+{{end}}
+{{else if service "pgbouncer-master"}}
+{{with index (service "pgbouncer-master") 0}}
+MB_DATABASE_STANDBY_URI = "postgresql://mbid_mapper@{{.Address}}:{{.Port}}/musicbrainz_db"
+{{end}}
+{{else}}
+MB_DATABASE_STANDBY_URI = "SERVICEDOESNOTEXIST_pgbouncer-slave_pgbouncer-master"
+{{end}}
+
+SQLALCHEMY_TIMESCALE_URI = ""
+TIMESCALE_ADMIN_URI=""
+TIMESCALE_ADMIN_LB_URI=""
+
+{{if service "timescale-listenbrainz"}}
+{{with index (service "timescale-listenbrainz") 0}}
+SQLALCHEMY_TIMESCALE_URI = """postgresql://listenbrainz_ts:{{template "KEY" "timescale_lb_password"}}@{{.Address}}:{{.Port}}/listenbrainz_ts"""
+TIMESCALE_ADMIN_URI = """postgresql://postgres:{{template "KEY" "timescale_admin_password"}}@{{.Address}}:{{.Port}}/postgres"""
+TIMESCALE_ADMIN_LB_URI = """postgresql://postgres:{{template "KEY" "timescale_admin_password"}}@{{.Address}}:{{.Port}}/listenbrainz_ts"""
+{{end}}
+{{else}}
+SQLALCHEMY_TIMESCALE_URI = "SERVICEDOESNOTEXIST_timescale-listenbrainz"
+TIMESCALE_ADMIN_URI = "SERVICEDOESNOTEXIST_timescale-listenbrainz"
+TIMESCALE_ADMIN_LB_URI = "SERVICEDOESNOTEXIST_timescale-listenbrainz"
+{{end}}
+
+{{if service "typesense-listenbrainz-new"}}
+{{with index (service "typesense-listenbrainz-new") 0}}
+TYPESENSE_HOST = "{{.Address}}"
+TYPESENSE_PORT = {{.Port}}
+{{end}}
+{{end}}
+
+{{if service "listenbrainz-redis"}}
+{{with index (service "listenbrainz-redis") 0}}
+REDIS_HOST = "{{.Address}}"
+REDIS_PORT = {{.Port}}
+REDIS_NAMESPACE = "listenbrainz"
+{{end}}
+{{else}}
+REDIS_HOST = "SERVICEDOESNOTEXIST_listenbrainz-redis"
+REDIS_PORT = "SERVICEDOESNOTEXIST_listenbrainz-redis"
+REDIS_NAMESPACE = "SERVICEDOESNOTEXIST_listenbrainz-redis"
+{{end}}
+
+TYPESENSE_API_KEY = '''{{template "KEY" "typesense_api_key"}}'''
+
+# Mapping specific settings
+
+# For debugging, only fetches a tiny portion of the data if True
+USE_MINIMAL_DATASET = False
+
+# Sentry config
+LOG_SENTRY = {
+    'dsn': '''{{template "KEY" "sentry/dsn"}}''',
+    'environment': '''{{template "KEY" "sentry/environment"}}''',
+    'release': os.getenv('GIT_SHA', None),
+    'traces_sample_rate': {{template "KEY" "sentry/traces_sample_rate"}},
+}
+DATASETS_SENTRY_DSN = '''{{template "KEY" "sentry/datasets_dsn"}}'''
+
+# For monitoring cron jobs
+SERVICE_MONITOR_TELEGRAM_BOT_TOKEN = '''{{template "KEY" "service_monitor_telegram_bot_token"}}'''
+SERVICE_MONITOR_TELEGRAM_CHAT_ID = '''{{template "KEY" "service_monitor_telegram_chat_id"}}'''

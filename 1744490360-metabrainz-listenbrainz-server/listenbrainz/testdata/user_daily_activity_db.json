@@ -1,0 +1,22 @@
+{
+  "from_ts": 0,
+  "to_ts": 10,
+  "data": [
+    {
+      "day": "Friday",
+      "hour": 1,
+      "listen_count": 5
+    },
+    {
+      "day": "Friday",
+      "hour": 2,
+      "listen_count": 5
+    },
+    {
+      "day": "Thursday",
+      "hour": 2,
+      "listen_count": 1
+    }
+  ],
+  "stats_range": "all_time"
+}

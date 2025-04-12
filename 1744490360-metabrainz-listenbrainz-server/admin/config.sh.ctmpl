@@ -1,0 +1,44 @@
+{{- define "KEY" -}}
+    {{ key (printf "docker-server-configs/LB/create-dumps-config.json/%s" .) }}
+{{- end -}}
+#!/bin/bash
+
+DUMP_THREADS="{{template "KEY" "dump_threads"}}"
+DUMP_BASE_DIR="{{template "KEY" "base_dir"}}"
+PRIVATE_DUMP_BASE_DIR="{{template "KEY" "private_base_dir"}}"
+
+# Where to back things up to, who should own the backup files, and what mode
+# those files should have.
+# The backups include a full database export
+BACKUP_DIR="{{template "KEY" "backup_dir"}}"
+BACKUP_USER="{{template "KEY" "user"}}"
+BACKUP_GROUP="{{template "KEY" "group"}}"
+BACKUP_DIR_MODE=700
+BACKUP_FILE_MODE=600
+
+PRIVATE_BACKUP_DIR="{{template "KEY" "private_backup_dir"}}"
+
+# Same but for the files that need to copied to the FTP server,
+# for public consumption
+FTP_DIR="{{template "KEY" "ftp_dir"}}"
+FTP_USER="{{template "KEY" "user"}}"
+FTP_GROUP="{{template "KEY" "group"}}"
+FTP_DIR_MODE=755
+FTP_FILE_MODE=644
+
+# rsync to FTP server configuration
+RSYNC_FULLEXPORT_HOST="{{template "KEY" "rsync_fullexport_host"}}"
+RSYNC_FULLEXPORT_PORT="{{template "KEY" "rsync_fullexport_port"}}"
+RSYNC_FULLEXPORT_DIR="$FTP_DIR/fullexport"
+RSYNC_INCREMENTAL_DIR="$FTP_DIR/incremental"
+RSYNC_SPARK_DIR="$FTP_DIR/spark"
+RSYNC_MBCANONICAL_DIR="$FTP_DIR/mbcanonical"
+RSYNC_FULLEXPORT_KEY='{{template "KEY" "user_home"}}/.ssh/rsync-listenbrainz-dumps-full'
+RSYNC_INCREMENTAL_KEY='{{template "KEY" "user_home"}}/.ssh/rsync-listenbrainz-dumps-incremental'
+RSYNC_SPARK_KEY='{{template "KEY" "user_home"}}/.ssh/rsync-listenbrainz-dumps-spark'
+RSYNC_MBCANONICAL_KEY='{{template "KEY" "user_home"}}/.ssh/rsync-listenbrainz-dumps-canonical'
+
+# Check to make sure that this container is the prod cron container, otherwise never rsync anything!
+# these variables may also be read by the dump command in python so export to ensure availability
+export PROD="{{ (env "DEPLOY_ENV") }}"
+export CONTAINER_NAME="{{ (env "CONTAINER_NAME") }}"

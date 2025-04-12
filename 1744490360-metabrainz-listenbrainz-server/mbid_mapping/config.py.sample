@@ -1,0 +1,34 @@
+#
+# Database connection.
+
+# Connection to LB database
+SQLALCHEMY_DATABASE_URI = "dbname=listenbrainz user=listenbrainz host=listenbrainz_lb_db_1 port=5432 password=listenbrainz"
+
+# Connection to Timescale LB database
+SQLALCHEMY_TIMESCALE_URI = "dbname=listenbrainz_ts user=listenbrainz_ts host=listenbrainz_lb_db_1 port=5432 password=listenbrainz_ts"
+
+# If you are connecting to a musicbrainz-docker instance for MusicBrainz data, this string should work:
+MBID_MAPPING_DATABASE_URI = "dbname=musicbrainz_db user=musicbrainz host=localhost port=25432 password=musicbrainz"
+
+# these database uris  are this way so that we can reuse existing MB infrastructure in production
+# we write to a primary database and reading from a read-only replica, when doing local development or otherwise
+# these can be left empty
+MB_DATABASE_MASTER_URI = ""
+MB_DATABASE_STANDBY_URI = ""
+
+# Typesense connection
+TYPESENSE_HOST = "typesense"
+TYPESENSE_PORT = 8108
+TYPESENSE_API_KEY = "sooper secret api key"
+
+# Redis
+REDIS_HOST = "redis"
+REDIS_PORT = 6379
+REDIS_NAMESPACE = "listenbrainz"
+
+# For debugging, only fetches a tiny portion of the data if True
+USE_MINIMAL_DATASET = True 
+
+# Service monitoring -- only needed for MetaBrainz production
+SERVICE_MONITOR_TELEGRAM_BOT_TOKEN = ""
+SERVICE_MONITOR_TELEGRAM_CHAT_ID = ""

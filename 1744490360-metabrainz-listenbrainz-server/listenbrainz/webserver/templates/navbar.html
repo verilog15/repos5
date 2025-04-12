@@ -1,0 +1,55 @@
+<nav role="navigation">
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#side-nav,#side-nav-overlay">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-logo" href="{{ url_for('index.index', redirect="false") }}">
+      <img src="{{ url_for('static', filename='img/navbar_logo.svg') }}" alt="ListenBrainz" height="31"/>
+    </a>
+  </div>
+  
+  {#- Collect the nav links, forms, and other content for toggling -#}
+  
+  {% if not hide_navbar_user_menu %}
+  <div id="side-nav" class="collapse">
+    <a class="navbar-logo" href="{{ url_for('index.index', redirect="false") }}">
+      <img src="{{ url_for('static', filename='img/listenbrainz_logo_icon.svg') }}" alt="ListenBrainz" />
+    </a>
+    <div class="main-nav">
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('index.index_pages', path='feed') }}" {{ 'class=active' if active_page == 'feed'}}>Feed</a>
+      <a href="{{ url_for('user.profile', user_name=current_user.musicbrainz_id) }}"  {{ 'class=active' if active_page=='dashboard' and my_profile }}>Dashboard</a>
+      {% else %}
+      <a href="{{ url_for('index.index_pages', page='recent') }}" {{ 'class=active' if active_page == 'feed'}}>Feed</a>
+      <a href="{{ url_for('index.index_pages', page='statistics') }}"  {{ 'class=active' if active_page=='dashboard' }}>Dashboard</a>
+      {% endif %}
+      <a href="{{ url_for('explore.index') }}"  {{ 'class=active' if active_page=='explore' }}>Explore</a>
+    </div>
+
+    <div class="navbar-bottom">
+      {% if current_user.is_authenticated and not current_user.is_anonymous %}
+      <div class="username">{{ current_user.musicbrainz_id }}</div>
+      <a href="/login/logout/">Logout</a>
+      <a {{ 'class=active' if active_settings_section is defined }} href="{{ url_for('settings.index', path='') }}">
+        Settings
+      </a>
+        {% else %}
+        <a href="/login/">Sign in</a>
+      {%- endif -%}
+      <a {{ 'class=active' if active_about_section is defined }} href="/about/">About</a>
+      <a href="https://community.metabrainz.org/c/listenbrainz" target="_blank" rel="noopener noreferrer">Community</a>
+      <form class="search-bar" role="search" method="GET" action="/search">
+          <input type="text" name="search_term" class="form-control input-sm" placeholder="Search users" required>
+        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+    </div>
+    <div class="mobile-nav-fix"></div>
+  </div>
+  <div id="side-nav-overlay" class="collapse" data-toggle="collapse" data-target="#side-nav,#side-nav-overlay"></div>
+  {% endif %}
+  </div>
+</nav>
