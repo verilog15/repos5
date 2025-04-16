@@ -1,0 +1,66 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Qt cache
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+
+# IDE project files
+*.sublime-project
+*.sublime-workspace
+
+# Local config unix
+.localconfig
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Build dir
+build
+debug_build
+release_build
+/bin
+/install
+/external/dawn/dawn
+/external/dawn/depot_tools
+/external/dawn/include
+/external/dawn/lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Dolphin files
+.directory
+
+# vscode
+.vscode/
+
+# Python cache
+__pycache__
+
+# Backup example files
+/src/examples/*.bak
+
+# Docker related files
+.Xauthority
