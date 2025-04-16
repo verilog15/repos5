@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://readytotouch.com/</loc>
+        <loc>https://readytotouch.com/organizers</loc>
+        <loc>https://readytotouch.com/organizers/golang/companies</loc>
+        <loc>https://readytotouch.com/organizers/golang/jobs</loc>
+        <loc>https://readytotouch.com/organizers/rust/companies</loc>
+        <loc>https://readytotouch.com/organizers/rust/jobs</loc>
+        <loc>https://readytotouch.com/organizers/zig/companies</loc>
+        <loc>https://readytotouch.com/organizers/zig/jobs</loc>
+        <loc>https://readytotouch.com/organizers/scala/companies</loc>
+        <loc>https://readytotouch.com/organizers/scala/jobs</loc>
+        <loc>https://readytotouch.com/organizers/elixir/companies</loc>
+        <loc>https://readytotouch.com/organizers/elixir/jobs</loc>
+        <loc>https://readytotouch.com/organizers/clojure/companies</loc>
+        <loc>https://readytotouch.com/organizers/clojure/jobs</loc>
+    </url>
+</urlset>
