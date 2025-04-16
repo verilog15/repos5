@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="https://logging.apache.org/xml/ns"
+       xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-changelog-0.xsd"
+       type="changed">
+  <issue id="2517" link="https://github.com/apache/logging-log4j2/pull/2517"/>
+  <description format="asciidoc">
+    Prioritize user-defined values of
+    xref:manual/systemproperties.adoc#log4j2.enableThreadlocals[`log4j2.enableThreadlocals`],
+    xref:manual/systemproperties.adoc#log4j2.garbagefreeThreadContextMap[`log4j2.garbagefreeThreadContextMap`]
+    and
+    xref:manual/systemproperties.adoc#log4j2.shutdownHookEnabled[`log4j2.shutdownHookEnabled`]
+    over the value of
+    xref:manual/systemproperties.adoc#log4j2.isWebapp[`log4j2.isWebapp`].
+  </description>
+</entry>
