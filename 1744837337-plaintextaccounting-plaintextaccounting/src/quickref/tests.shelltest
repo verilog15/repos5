@@ -1,0 +1,11 @@
+#!/usr/bin/env shelltest
+# -*- sh -*-
+
+$ ledger -f a.ledger print
+> //
+
+$ hledger -f a.hledger print
+> //
+
+$ bean-query a.beancount print
+> //

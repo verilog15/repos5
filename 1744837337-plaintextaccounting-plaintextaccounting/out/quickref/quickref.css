@@ -1,0 +1,22 @@
+/* revert some skeleton styles, reduce whitespace */
+body { line-height:revert; }
+div.container { width:100%; max-width:revert; margin:1em; }
+ul ul {margin-top:revert; margin-bottom:revert;}
+ul li {margin-top:revert; margin-bottom:revert;}
+p { margin:revert;}
+h1,h2,h3 { white-space:revert; }
+
+/* styles used by index.md's table */
+table#quickref3 p { margin:0; }
+table#quickref3 tr { vertical-align:top; }
+table#quickref3 tr:first-child { font-weight:bold; }
+table#quickref3 tr:first-child a { font-size:small; }
+table#quickref3 td:first-child { width:10%; }
+table#quickref3 tr:not(:first-child) td:not(:first-child) span:first-child { 
+  white-space:nowrap;
+  font-weight:bold;
+  color:navy;
+  font-family:monospace;
+}
+table#quickref3 tr:not(:first-child) td:not(:first-child) span:not(:first-child) { font-size:small; }
+table#quickref3 td:not(:first-child) { width:30%; }
