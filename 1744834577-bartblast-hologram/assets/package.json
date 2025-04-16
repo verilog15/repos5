@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@biomejs/biome": "^1",
+    "esbuild": "^0.25",
+    "lodash": "^4",
+    "phoenix": "^1",
+    "snabbdom": "^3",
+    "snabbdom-to-html": "^7"
+  },
+  "devDependencies": {
+    "chai": "^5",
+    "eslint": "^9",
+    "fake-indexeddb": "^6",
+    "jsdom": "^26",
+    "jsdom-global": "^3",
+    "mocha": "^11",
+    "prettier": "^3",
+    "sinon": "^20"
+  },
+  "scripts": {
+    "test": "mocha '../test/javascript/**/*.mjs' --color --require jsdom-global/register",
+    "test-file": "mocha --color --require jsdom-global/register"
+  }
+}

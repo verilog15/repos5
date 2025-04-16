@@ -1,0 +1,5 @@
+[
+  exit: "low",
+  ignore: ["Config.HTTPS", "Traversal.FileModule"],
+  skip: true
+]
